@@ -1,7 +1,7 @@
 class JsonWebToken
   def self.encode(payload)
-    # expiration = 60.minutes.from_now
-    expiration = 10
+    expiration = 30.minutes.from_now.to_i
+    # expiration = 10
     JWT.encode payload.merge(exp: expiration), Rails.application.secrets.secret_key_base
   end
 
